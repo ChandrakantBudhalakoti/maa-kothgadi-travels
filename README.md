@@ -18,7 +18,6 @@ npm run build && npm start   # production
 - `src/i18n/ui.ts` all interface text in both languages · `src/i18n/seo-copy.ts` per-page titles/descriptions
 - `src/data/` services, vehicles, blog articles (edit content here)
 - `src/lib/seo.ts` metadata, hreflang, canonical, JSON-LD
-- `legacy/index.html` the original single-file site, kept for reference
 - `/hi` is Hindi written in Roman script, declared as `hi-Latn` in hreflang
 
 ## Reviews and moderation
