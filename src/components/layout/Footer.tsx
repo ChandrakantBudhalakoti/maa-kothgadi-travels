@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Phone } from "lucide-react";
 import { Logo, navItems } from "./Header";
+import { routes } from "@/data/routes";
 import { Container } from "@/components/ui/primitives";
 import { FacebookIcon, InstagramIcon, WhatsAppIcon } from "@/components/ui/icons";
 import { business, waLink } from "@/lib/site";
@@ -15,7 +16,7 @@ export function Footer({ locale }: { locale: Locale }) {
   ];
   return (
     <footer className="topo bg-forest-950 text-cream-200">
-      <Container className="grid gap-10 py-14 md:grid-cols-[1.4fr_1fr_1.2fr]">
+      <Container className="grid gap-10 py-14 md:grid-cols-[1.3fr_0.9fr_1.2fr_1.1fr]">
         <div>
           <Logo locale={locale} light />
           <p className="mt-5 max-w-sm text-sm leading-relaxed">{tr(ui.footer.about, locale)}</p>
@@ -37,6 +38,19 @@ export function Footer({ locale }: { locale: Locale }) {
               <li key={item.href}>
                 <Link href={item.href} className="inline-block py-1.5 text-[0.95rem] underline-offset-4 hover:text-cream-50 hover:underline">
                   {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <nav aria-label={tr(ui.footer.routes, locale)}>
+          <h2 className="font-sans text-sm font-semibold tracking-[0.18em] text-gold-400 uppercase">{tr(ui.footer.routes, locale)}</h2>
+          <ul className="mt-4 space-y-1">
+            {routes.map((r) => (
+              <li key={r.slug}>
+                <Link href={`/${locale}/taxi/${r.slug}`} className="inline-block py-1.5 text-[0.95rem] underline-offset-4 hover:text-cream-50 hover:underline">
+                  {tr(r.label, locale)}
                 </Link>
               </li>
             ))}

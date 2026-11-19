@@ -8,6 +8,8 @@ import { BlogCard } from "@/components/blog/BlogCard";
 import { ReviewCard, ReviewSummaryCard } from "@/components/reviews/ReviewList";
 import { VehicleCard } from "@/components/vehicles/VehicleCard";
 import { ButtonLink, Container, SectionHeading } from "@/components/ui/primitives";
+import { RouteCard } from "@/components/home/RouteCard";
+import { routes } from "@/data/routes";
 import { posts } from "@/data/blog";
 import { vehicles } from "@/data/vehicles";
 import { tr } from "@/i18n/config";
@@ -49,6 +51,17 @@ export default async function HomePage({ params }: LocaleParams) {
       </section>
 
       <section className="bg-cream-100 py-16 sm:py-20 lg:py-24">
+        <Container>
+          <SectionHeading eyebrow={tr(ui.routes.eyebrow, locale)} title={tr(ui.routes.title, locale)} lead={tr(ui.routes.lead, locale)} />
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {routes.map((r) => (
+              <RouteCard key={r.slug} route={r} locale={locale} />
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      <section className="py-16 sm:py-20 lg:py-24">
         <Container>
           <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
             <SectionHeading eyebrow={tr(h.fleetEyebrow, locale)} title={tr(h.fleetTitle, locale)} lead={tr(h.fleetLead, locale)} />

@@ -33,7 +33,7 @@ export const ui = {
     callFloat: { en: "Call", hi: "Call" } as L,
   },
   home: {
-    eyebrow: { en: "Taxi & travel in Uttarakhand", hi: "Uttarakhand mein taxi aur travel" } as L,
+    eyebrow: { en: "Taxi service in Nainital, Haldwani & Uttarakhand", hi: "Nainital, Haldwani aur Uttarakhand mein taxi" } as L,
     h1a: { en: "Travel the hills", hi: "Pahadon ka safar" } as L,
     h1b: { en: "in comfort.", hi: "aaram se." } as L,
     lead: {
@@ -381,6 +381,24 @@ export const ui = {
       hi: "Apna route aur dates batayein. Hum gaadi aur rate aapse confirm karenge.",
     } as L,
   },
+  routes: {
+    eyebrow: { en: "Popular routes", hi: "Popular routes" } as L,
+    title: { en: "Taxi in Nainital, Haldwani and Kathgodam", hi: "Nainital, Haldwani aur Kathgodam mein taxi" } as L,
+    lead: {
+      en: "Heading to Nainital, or coming back down to Haldwani? These are the routes people ask us about most. Need a nearby taxi? Just call and tell us where you are.",
+      hi: "Nainital jaana hai, ya Haldwani wapas aana hai? Yeh woh routes hain jinke baare mein log sabse zyada poochte hain. Paas mein taxi chahiye? Bas call karke batayein aap kahan hain.",
+    } as L,
+    view: { en: "View route", hi: "Route dekhein" } as L,
+    quick: { en: "At a glance", hi: "Ek nazar mein" } as L,
+    book: { en: "Book this route", hi: "Yeh route book karein" } as L,
+    faq: { en: "Frequently asked questions", hi: "Aksar poochhe jaane wale sawaal" } as L,
+    other: { en: "Other routes", hi: "Aur routes" } as L,
+    vehicles: { en: "Vehicles for this trip", hi: "Is trip ke liye gaadiyan" } as L,
+    note: {
+      en: "Rates, availability and travel time are confirmed with you before the trip.",
+      hi: "Rate, availability aur safar ka samay trip se pehle aapse confirm kiye jaate hain.",
+    } as L,
+  },
   footer: {
     about: {
       en: "Taxi and travel service for outstation trips, airport transfers and local travel in Uttarakhand.",
@@ -388,6 +406,7 @@ export const ui = {
     } as L,
     explore: { en: "Explore", hi: "Explore" } as L,
     reach: { en: "Reach us", hi: "Sampark" } as L,
+    routes: { en: "Popular routes", hi: "Popular routes" } as L,
     rights: { en: "All rights reserved.", hi: "Sabhi adhikar surakshit." } as L,
     tagline: { en: "Your journey, our responsibility.", hi: "Safar aapka, bharosa hamara." } as L,
   },

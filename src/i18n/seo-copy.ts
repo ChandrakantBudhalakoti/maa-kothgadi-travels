@@ -4,12 +4,12 @@ import type { L } from "./config";
 export const seoCopy = {
   home: {
     title: {
-      en: "Maa Kothgadi Tour & Travels | Taxi Service in Uttarakhand",
-      hi: "Maa Kothgadi Tour & Travels | Uttarakhand Taxi Booking",
+      en: "Taxi Service in Nainital & Haldwani | Maa Kothgadi Tour & Travels",
+      hi: "Nainital aur Haldwani Taxi Service | Maa Kothgadi Tour & Travels",
     } as L,
     description: {
-      en: "Book outstation taxis, airport pickup and drop, and local rides in Uttarakhand with Maa Kothgadi Tour & Travels. Clean cars, friendly drivers, simple booking on call or WhatsApp.",
-      hi: "Maa Kothgadi Tour & Travels se Uttarakhand mein outstation taxi, airport pickup/drop aur local ride book karein. Saaf gaadiyan, bharosemand driver, call ya WhatsApp par aasaan booking.",
+      en: "Taxi service in Nainital, Haldwani and across Uttarakhand: Haldwani to Nainital taxi, outstation trips, airport pickup and local rides. Book on call or WhatsApp.",
+      hi: "Nainital, Haldwani aur Uttarakhand mein taxi service: Haldwani se Nainital taxi, outstation trips, airport pickup aur local ride. Call ya WhatsApp par book karein.",
     } as L,
   },
   about: {
@@ -22,8 +22,8 @@ export const seoCopy = {
   services: {
     title: { en: "Outstation, Airport & Local Taxi Services", hi: "Outstation, Airport aur Local Taxi Services" } as L,
     description: {
-      en: "Outstation one-way and round trips, airport pickup and drop, and local taxi rides. See what we offer and book with a single call or WhatsApp message.",
-      hi: "Outstation one-way aur round trip, airport pickup/drop aur local taxi rides. Dekhein hum kya offer karte hain aur ek call ya WhatsApp message se book karein.",
+      en: "Outstation one-way and round trips, airport pickup and drop, and local taxi rides, including taxis for Nainital and Haldwani. Book with one call or WhatsApp message.",
+      hi: "Outstation one-way aur round trip, airport pickup/drop aur local taxi rides, Nainital aur Haldwani ke taxi samet. Ek call ya WhatsApp message se book karein.",
     } as L,
   },
   vehicles: {
@@ -43,8 +43,8 @@ export const seoCopy = {
   contact: {
     title: { en: "Contact & Book a Taxi", hi: "Contact aur Taxi Booking" } as L,
     description: {
-      en: "Call +91 63961 56873 or +91 94581 34038, message us on WhatsApp, or send your trip details to book a taxi with Maa Kothgadi Tour & Travels.",
-      hi: "+91 63961 56873 ya +91 94581 34038 par call karein, WhatsApp par message karein, ya trip details bhejkar Maa Kothgadi Tour & Travels se taxi book karein.",
+      en: "Book a taxi for Nainital, Haldwani or anywhere nearby. Call +91 63961 56873 or +91 94581 34038, message on WhatsApp, or send your trip details.",
+      hi: "Nainital, Haldwani ya aas-paas kahin ke liye taxi book karein. +91 63961 56873 ya +91 94581 34038 par call karein, WhatsApp karein, ya trip details bhejein.",
     } as L,
   },
   blog: {

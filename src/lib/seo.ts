@@ -55,7 +55,11 @@ export function businessJsonLd(locale: Locale) {
     telephone: business.phones.map((p) => p.tel),
     hasMap: business.googleMapsUrl,
     sameAs: [business.social.instagram, business.social.instagramOwner, business.social.facebook],
-    areaServed: { "@type": "AdministrativeArea", name: "Uttarakhand" },
+    areaServed: [
+      { "@type": "AdministrativeArea", name: "Uttarakhand" },
+      { "@type": "City", name: "Nainital" },
+      { "@type": "City", name: "Haldwani" },
+    ],
     knowsLanguage: ["en", "hi"],
     makesOffer: ["Outstation taxi", "Airport pickup and drop", "Local taxi"].map((n) => ({
       "@type": "Offer",
