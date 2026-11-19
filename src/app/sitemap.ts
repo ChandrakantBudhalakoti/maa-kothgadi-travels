@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { posts } from "@/data/blog";
-import { hreflang, locales } from "@/i18n/config";
+import { locales } from "@/i18n/config";
 import { sitemapPages } from "@/lib/sitemap-pages";
 import { pathFor, SITE_URL } from "@/lib/site";
 
@@ -15,7 +15,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: e.lastModified,
       changeFrequency: e.changeFrequency,
       priority: e.priority,
-      alternates: { languages: Object.fromEntries(locales.map((l) => [hreflang[l], `${SITE_URL}${pathFor(l, e.path)}`])) },
     })),
   );
 }
