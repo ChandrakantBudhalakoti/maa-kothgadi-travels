@@ -1,0 +1,149 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-figtree), ui-sans-serif, system-ui, sans-serif;
+
+  /* Deep forest greens */
+  --color-forest-950: #0c1a12;
+  --color-forest-900: #12281b;
+  --color-forest-800: #1a3a28;
+  --color-forest-700: #234d36;
+  --color-forest-600: #2f6347;
+  --color-forest-100: #dfe9e1;
+
+  /* Warm cream */
+  --color-cream-50: #fcfaf5;
+  --color-cream-100: #f6f0e3;
+  --color-cream-200: #ebe1ca;
+  --color-cream-300: #d9ccaa;
+
+  /* Golden accents (gold-700 is AA on cream, gold-400 is AA on forest) */
+  --color-gold-400: #d9ae52;
+  --color-gold-500: #c29433;
+  --color-gold-700: #7d5a14;
+
+  --color-ink: #1b231e;
+  --color-ink-soft: #4a554d;
+
+  --shadow-card: 0 1px 2px rgb(18 40 27 / 0.06), 0 12px 32px -12px rgb(18 40 27 / 0.18);
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-cream-50);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-gold-500);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+::selection {
+  background: var(--color-gold-400);
+  color: var(--color-forest-950);
+}
+
+/* Gentle entrance for hero content only. */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.rise {
+  animation: rise 0.7s var(--ease-out-soft) both;
+}
+.rise-2 {
+  animation-delay: 0.1s;
+}
+.rise-3 {
+  animation-delay: 0.2s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .rise {
+    animation: none;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Star rating input: radios in reverse order so CSS can highlight the chosen star and those before it. */
+.star-input {
+  display: inline-flex;
+  flex-direction: row-reverse;
+  gap: 0.15rem;
+}
+.star-input input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+.star-input label {
+  cursor: pointer;
+  color: var(--color-cream-300);
+  transition: color 0.15s, transform 0.15s;
+  padding: 0.1rem;
+}
+.star-input label:hover,
+.star-input label:hover ~ label,
+.star-input input:checked ~ label {
+  color: var(--color-gold-500);
+}
+.star-input label:hover {
+  transform: scale(1.08);
+}
+.star-input input:focus-visible + label {
+  outline: 3px solid var(--color-gold-500);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Subtle topographic texture for dark sections (pure CSS, no image request). */
+.topo {
+  background-image: repeating-radial-gradient(circle at 85% 0%, transparent 0 22px, rgb(217 174 82 / 0.07) 22px 23px);
+}
+
+/* Mobile bottom bar spacing so content is never hidden behind it. */
+@media (max-width: 767px) {
+  body {
+    padding-bottom: 4.25rem;
+  }
+}
