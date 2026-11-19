@@ -12,6 +12,7 @@ export default function AdminPage() {
   const [tab, setTab] = useState<ReviewStatus>("pending");
   const [message, setMessage] = useState("");
   const [busy, setBusy] = useState(false);
+  const [confirm, setConfirm] = useState<ReviewStatus | null>(null);
 
   const load = useCallback(async (t: string) => {
     setBusy(true);
@@ -29,16 +30,20 @@ export default function AdminPage() {
     }
   }, []);
 
-  async function change(id: string, status: ReviewStatus) {
+  /** Change one review, or many at once (bulk approve / reject). */
+  async function change(ids: string[], status: ReviewStatus) {
     setBusy(true);
+    setMessage("");
+    setConfirm(null);
     const res = await fetch("/api/admin/reviews", {
       method: "PATCH",
       headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
-      body: JSON.stringify({ id, status }),
+      body: JSON.stringify({ ids, status }),
     });
     setBusy(false);
-    if (!res.ok) return setMessage("Could not update that review.");
-    setReviews((list) => list?.map((r) => (r.id === id ? { ...r, status } : r)) ?? null);
+    if (!res.ok) return setMessage("Could not update the review(s). Please try again.");
+    const set = new Set(ids);
+    setReviews((list) => list?.map((r) => (set.has(r.id) ? { ...r, status } : r)) ?? null);
   }
 
   function onLogin(e: FormEvent) {
@@ -79,18 +84,56 @@ export default function AdminPage() {
         Public rating: <strong>{avg}</strong> from {approved.length} approved review{approved.length === 1 ? "" : "s"}.
       </p>
 
-      <div role="tablist" className="mt-8 flex gap-2">
+      <div className="mt-8 flex flex-wrap items-center justify-between gap-3">
+        <div role="tablist" className="flex flex-wrap gap-2">
         {tabs.map((t) => (
-          <button key={t} role="tab" aria-selected={tab === t} onClick={() => setTab(t)} className={`rounded-full px-5 py-2.5 text-sm font-semibold capitalize ${tab === t ? "bg-forest-800 text-cream-50" : "bg-cream-100 text-forest-900"}`}>
+          <button key={t} role="tab" aria-selected={tab === t} onClick={() => { setTab(t); setConfirm(null); }} className={`rounded-full px-5 py-2.5 text-sm font-semibold capitalize ${tab === t ? "bg-forest-800 text-cream-50" : "bg-cream-100 text-forest-900"}`}>
             {t} ({reviews.filter((r) => r.status === t).length})
           </button>
         ))}
+        </div>
+        <button type="button" disabled={busy} onClick={() => load(token)} className="inline-flex items-center gap-2 rounded-full border border-forest-800/30 px-5 py-2.5 text-sm font-semibold text-forest-900 hover:bg-forest-900 hover:text-cream-50 disabled:opacity-60">
+          <span aria-hidden>&#8635;</span>
+          {busy ? "Refreshing…" : "Refresh"}
+        </button>
       </div>
 
       {message && (
         <p role="alert" className="mt-4 text-sm font-medium text-red-700">
           {message}
         </p>
+      )}
+
+      {shown.length > 0 && (
+        <div className="mt-6 flex flex-wrap items-center gap-3 rounded-2xl bg-cream-100 p-4">
+          {confirm ? (
+            <>
+              <p className="font-semibold">
+                {confirm === "approved" ? "Approve" : confirm === "rejected" ? "Reject" : "Move to pending"} all {shown.length} {tab} review{shown.length === 1 ? "" : "s"}?
+              </p>
+              <button disabled={busy} onClick={() => change(shown.map((r) => r.id), confirm)} className="rounded-full bg-forest-800 px-5 py-2.5 text-sm font-semibold text-cream-50 disabled:opacity-60">
+                Yes, confirm
+              </button>
+              <button disabled={busy} onClick={() => setConfirm(null)} className="rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-forest-900">
+                Cancel
+              </button>
+            </>
+          ) : (
+            <>
+              <span className="text-sm text-ink-soft">All {shown.length} in this tab:</span>
+              {tab !== "approved" && (
+                <button disabled={busy} onClick={() => setConfirm("approved")} className="rounded-full bg-[#128c4a] px-5 py-2.5 text-sm font-semibold text-white disabled:opacity-60">
+                  Approve all
+                </button>
+              )}
+              {tab !== "rejected" && (
+                <button disabled={busy} onClick={() => setConfirm("rejected")} className="rounded-full bg-red-700 px-5 py-2.5 text-sm font-semibold text-white disabled:opacity-60">
+                  Reject all
+                </button>
+              )}
+            </>
+          )}
+        </div>
       )}
 
       <ul className="mt-6 space-y-4">
@@ -110,7 +153,7 @@ export default function AdminPage() {
               {tabs
                 .filter((s) => s !== r.status)
                 .map((s) => (
-                  <button key={s} disabled={busy} onClick={() => change(r.id, s)} className={`rounded-full px-4 py-2 text-sm font-semibold capitalize disabled:opacity-60 ${s === "approved" ? "bg-[#128c4a] text-white" : s === "rejected" ? "bg-red-700 text-white" : "bg-cream-200 text-forest-900"}`}>
+                  <button key={s} disabled={busy} onClick={() => change([r.id], s)} className={`rounded-full px-4 py-2 text-sm font-semibold capitalize disabled:opacity-60 ${s === "approved" ? "bg-[#128c4a] text-white" : s === "rejected" ? "bg-red-700 text-white" : "bg-cream-200 text-forest-900"}`}>
                     {s === "approved" ? "Approve" : s === "rejected" ? "Reject" : "Move to pending"}
                   </button>
                 ))}

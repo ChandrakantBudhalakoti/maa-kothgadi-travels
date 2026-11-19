@@ -33,19 +33,22 @@ export async function PATCH(request: NextRequest) {
   if (ok === null) return NextResponse.json({ error: "admin_not_configured" }, { status: 503, headers: noStore });
   if (!ok) return NextResponse.json({ error: "unauthorised" }, { status: 401, headers: noStore });
 
-  const body = (await request.json().catch(() => null)) as { id?: unknown; status?: unknown } | null;
+  const body = (await request.json().catch(() => null)) as { id?: unknown; ids?: unknown; status?: unknown } | null;
   const status = body?.status as ReviewStatus;
-  if (typeof body?.id !== "string" || !["pending", "approved", "rejected"].includes(status)) {
+  // Accept a single id, or a list of ids for bulk approve / reject.
+  const ids = Array.isArray(body?.ids) ? body.ids : typeof body?.id === "string" ? [body.id] : [];
+  if (!["pending", "approved", "rejected"].includes(status) || ids.length === 0 || ids.length > 500 || !ids.every((i) => typeof i === "string")) {
     return NextResponse.json({ error: "invalid" }, { status: 400, headers: noStore });
   }
   try {
-    const found = await setStatus(body.id, status);
-    if (!found) return NextResponse.json({ error: "not_found" }, { status: 404, headers: noStore });
+    let updated = 0;
+    for (const id of ids as string[]) if (await setStatus(id, status)) updated++;
+    if (updated === 0) return NextResponse.json({ error: "not_found" }, { status: 404, headers: noStore });
     for (const locale of locales) {
       revalidatePath(`/${locale}/reviews`);
       revalidatePath(`/${locale}`);
     }
-    return NextResponse.json({ ok: true }, { headers: noStore });
+    return NextResponse.json({ ok: true, updated }, { headers: noStore });
   } catch (error) {
     console.error(error);
     return NextResponse.json({ error: "server" }, { status: 500, headers: noStore });
