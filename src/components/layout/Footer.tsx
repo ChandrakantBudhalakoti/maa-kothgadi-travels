@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Phone } from "lucide-react";
 import { Logo, navItems } from "./Header";
-import { routes } from "@/data/routes";
+import { featuredRoutes } from "@/data/routes";
 import { Container } from "@/components/ui/primitives";
 import { FacebookIcon, InstagramIcon, WhatsAppIcon } from "@/components/ui/icons";
 import { business, waLink } from "@/lib/site";
@@ -47,7 +47,7 @@ export function Footer({ locale }: { locale: Locale }) {
         <nav aria-label={tr(ui.footer.routes, locale)}>
           <h2 className="font-sans text-sm font-semibold tracking-[0.18em] text-gold-400 uppercase">{tr(ui.footer.routes, locale)}</h2>
           <ul className="mt-4 space-y-1">
-            {routes.map((r) => (
+            {featuredRoutes.map((r) => (
               <li key={r.slug}>
                 <Link href={`/${locale}/taxi/${r.slug}`} className="inline-block py-1.5 text-[0.95rem] underline-offset-4 hover:text-cream-50 hover:underline">
                   {tr(r.label, locale)}

@@ -68,7 +68,7 @@ export default async function ServicesPage({ params }: LocaleParams) {
         </ul>
         <p className="mt-10 max-w-3xl text-lg text-ink-soft">{tr(ui.services.other, locale)}</p>
 
-        <h2 className="mt-16 text-3xl font-semibold text-forest-900">{tr(ui.routes.title, locale)}</h2>
+        <h2 id="routes" className="mt-16 scroll-mt-24 text-3xl font-semibold text-forest-900">{tr(ui.routes.title, locale)}</h2>
         <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {routes.map((r) => (
             <RouteCard key={r.slug} route={r} locale={locale} />

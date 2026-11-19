@@ -8,8 +8,8 @@ export const seoCopy = {
       hi: "Nainital aur Haldwani Taxi Service | Maa Kothgadi Tour & Travels",
     } as L,
     description: {
-      en: "Taxi service in Nainital, Haldwani and across Uttarakhand: Haldwani to Nainital taxi, outstation trips, airport pickup and local rides. Book on call or WhatsApp.",
-      hi: "Nainital, Haldwani aur Uttarakhand mein taxi service: Haldwani se Nainital taxi, outstation trips, airport pickup aur local ride. Call ya WhatsApp par book karein.",
+      en: "Taxi service in Nainital, Haldwani and everywhere in Uttarakhand, plus trips across India when you book one. Outstation, airport pickup and local rides. Call or WhatsApp.",
+      hi: "Nainital, Haldwani aur poore Uttarakhand mein taxi service, aur booking aane par poore India ke lambe safar. Outstation, airport pickup aur local ride. Call ya WhatsApp karein.",
     } as L,
   },
   about: {

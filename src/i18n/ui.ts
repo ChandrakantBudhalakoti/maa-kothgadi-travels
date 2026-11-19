@@ -259,8 +259,8 @@ export const ui = {
     socialTitle: { en: "Follow us", hi: "Hamein follow karein" } as L,
     areaTitle: { en: "Pickup & drop locations", hi: "Pickup aur drop ki jagah" } as L,
     areaBody: {
-      en: "We confirm pickup and drop locations when you call. Tell us where you want to go and we will tell you honestly if we can take you.",
-      hi: "Pickup aur drop ki jagah call par confirm hoti hai. Batayein kahan jaana hai, hum saaf bata denge ki le ja sakte hain ya nahi.",
+      en: "We pick up from anywhere in Uttarakhand, and take trips across India when you book one. Tell us your pickup and destination and we will confirm honestly whether and when we can take you.",
+      hi: "Hum Uttarakhand mein kahin se bhi pickup karte hain, aur booking aane par poore India ke trips bhi. Pickup aur manzil batayein, hum saaf bata denge ki kab aur kaise le ja sakte hain.",
     } as L,
     instagram: { en: "Instagram (business)", hi: "Instagram (business)" } as L,
     instagramOwner: { en: "Instagram (owner)", hi: "Instagram (owner)" } as L,
@@ -383,12 +383,13 @@ export const ui = {
   },
   routes: {
     eyebrow: { en: "Popular routes", hi: "Popular routes" } as L,
-    title: { en: "Taxi in Nainital, Haldwani and Kathgodam", hi: "Nainital, Haldwani aur Kathgodam mein taxi" } as L,
+    title: { en: "Taxi in Nainital, Haldwani and across Uttarakhand", hi: "Nainital, Haldwani aur poore Uttarakhand mein taxi" } as L,
     lead: {
-      en: "Heading to Nainital, or coming back down to Haldwani? These are the routes people ask us about most. Need a nearby taxi? Just call and tell us where you are.",
-      hi: "Nainital jaana hai, ya Haldwani wapas aana hai? Yeh woh routes hain jinke baare mein log sabse zyada poochte hain. Paas mein taxi chahiye? Bas call karke batayein aap kahan hain.",
+      en: "We pick up from anywhere in Uttarakhand, and take trips across India when you book one. These are the routes people ask about most. Need a nearby taxi? Just call and tell us where you are.",
+      hi: "Hum Uttarakhand mein kahin se bhi pickup karte hain, aur booking aane par poore India ke lambe safar bhi. Yeh woh routes hain jinke baare mein log sabse zyada poochte hain. Paas mein taxi chahiye? Bas call karke batayein aap kahan hain.",
     } as L,
     view: { en: "View route", hi: "Route dekhein" } as L,
+    all: { en: "See all routes and areas we cover", hi: "Saare routes aur jahan hum jaate hain, dekhein" } as L,
     quick: { en: "At a glance", hi: "Ek nazar mein" } as L,
     book: { en: "Book this route", hi: "Yeh route book karein" } as L,
     faq: { en: "Frequently asked questions", hi: "Aksar poochhe jaane wale sawaal" } as L,
@@ -401,8 +402,8 @@ export const ui = {
   },
   footer: {
     about: {
-      en: "Taxi and travel service for outstation trips, airport transfers and local travel in Uttarakhand.",
-      hi: "Uttarakhand mein outstation trips, airport transfer aur local travel ke liye taxi aur travel service.",
+      en: "Taxi and travel service for outstation trips, airport transfers and local travel. Pickups from anywhere in Uttarakhand, and across India when you book a trip there.",
+      hi: "Outstation trips, airport transfer aur local travel ke liye taxi aur travel service. Uttarakhand mein kahin se bhi pickup, aur booking aane par poore India mein.",
     } as L,
     explore: { en: "Explore", hi: "Explore" } as L,
     reach: { en: "Reach us", hi: "Sampark" } as L,

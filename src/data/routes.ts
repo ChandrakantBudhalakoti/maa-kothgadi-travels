@@ -1,8 +1,11 @@
 import type { L } from "@/i18n/config";
 import type { Section } from "./blog";
+import { regionalRoutes } from "./routes-regional";
 
 export type TaxiRoute = {
   slug: string;
+  /** Shown on the home page and in the footer. */
+  featured?: boolean;
   image: string;
   imagePosition: string;
   imageAlt: L;
@@ -26,9 +29,10 @@ export type TaxiRoute = {
  * station in the Haldwani area. No prices, no fixed timings, no invented distances beyond rough
  * public figures; the pages say that rates are confirmed with the customer.
  */
-export const routes: TaxiRoute[] = [
+const coreRoutes: TaxiRoute[] = [
   {
     slug: "taxi-service-in-nainital",
+    featured: true,
     image: "/images/aura.jpg",
     imagePosition: "50% 60%",
     imageAlt: {
@@ -113,6 +117,7 @@ export const routes: TaxiRoute[] = [
   },
   {
     slug: "haldwani-to-nainital-taxi",
+    featured: true,
     image: "/images/hero.jpg",
     imagePosition: "50% 60%",
     imageAlt: {
@@ -213,6 +218,7 @@ export const routes: TaxiRoute[] = [
   },
   {
     slug: "kathgodam-to-nainital-taxi",
+    featured: true,
     image: "/images/innova.jpg",
     imagePosition: "50% 50%",
     imageAlt: {
@@ -292,5 +298,8 @@ export const routes: TaxiRoute[] = [
     },
   },
 ];
+
+export const routes: TaxiRoute[] = [...coreRoutes, ...regionalRoutes];
+export const featuredRoutes = routes.filter((r) => r.featured);
 
 export const getRoute = (slug: string) => routes.find((r) => r.slug === slug);

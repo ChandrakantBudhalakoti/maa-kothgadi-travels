@@ -9,7 +9,7 @@ import { ReviewCard, ReviewSummaryCard } from "@/components/reviews/ReviewList";
 import { VehicleCard } from "@/components/vehicles/VehicleCard";
 import { ButtonLink, Container, SectionHeading } from "@/components/ui/primitives";
 import { RouteCard } from "@/components/home/RouteCard";
-import { routes } from "@/data/routes";
+import { featuredRoutes } from "@/data/routes";
 import { posts } from "@/data/blog";
 import { vehicles } from "@/data/vehicles";
 import { tr } from "@/i18n/config";
@@ -54,9 +54,15 @@ export default async function HomePage({ params }: LocaleParams) {
         <Container>
           <SectionHeading eyebrow={tr(ui.routes.eyebrow, locale)} title={tr(ui.routes.title, locale)} lead={tr(ui.routes.lead, locale)} />
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {routes.map((r) => (
+            {featuredRoutes.map((r) => (
               <RouteCard key={r.slug} route={r} locale={locale} />
             ))}
+          </div>
+          <div className="mt-8">
+            <Link href={pathFor(locale, "/services#routes")} className="inline-flex items-center gap-2 font-semibold text-forest-800 underline-offset-4 hover:underline">
+              {tr(ui.routes.all, locale)}
+              <ArrowRight aria-hidden width={17} height={17} />
+            </Link>
           </div>
         </Container>
       </section>

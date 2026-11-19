@@ -59,6 +59,9 @@ export function businessJsonLd(locale: Locale) {
       { "@type": "AdministrativeArea", name: "Uttarakhand" },
       { "@type": "City", name: "Nainital" },
       { "@type": "City", name: "Haldwani" },
+      { "@type": "City", name: "Almora" },
+      { "@type": "City", name: "Haridwar" },
+      { "@type": "City", name: "Dehradun" },
     ],
     knowsLanguage: ["en", "hi"],
     makesOffer: ["Outstation taxi", "Airport pickup and drop", "Local taxi"].map((n) => ({
