@@ -53,6 +53,7 @@ export function businessJsonLd(locale: Locale) {
     url: `${SITE_URL}${pathFor(locale)}`,
     image: abs(DEFAULT_OG_IMAGE),
     telephone: business.phones.map((p) => p.tel),
+    hasMap: business.googleMapsUrl,
     sameAs: [business.social.instagram, business.social.instagramOwner, business.social.facebook],
     areaServed: { "@type": "AdministrativeArea", name: "Uttarakhand" },
     knowsLanguage: ["en", "hi"],

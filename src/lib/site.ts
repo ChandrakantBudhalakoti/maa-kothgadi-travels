@@ -11,10 +11,13 @@ export const business = {
     instagramOwner: "https://www.instagram.com/pankaj_mahra_9444",
     facebook: "https://www.facebook.com/pankaj.mahra.1238",
   },
-  /** Set NEXT_PUBLIC_GOOGLE_REVIEW_URL once the Google Business Profile is verified. */
-  googleReviewUrl: process.env.NEXT_PUBLIC_GOOGLE_REVIEW_URL ?? "",
-  /** Set NEXT_PUBLIC_GOOGLE_MAPS_URL once the exact business location is confirmed. */
-  googleMapsUrl: process.env.NEXT_PUBLIC_GOOGLE_MAPS_URL ?? "",
+  /** Google Maps listing. Env var overrides it (e.g. if the listing changes). */
+  googleMapsUrl: process.env.NEXT_PUBLIC_GOOGLE_MAPS_URL || "https://maps.app.goo.gl/Nxc1yLqwbvXVnqbF9",
+  /**
+   * Direct "write a review" link (https://search.google.com/local/writereview?placeid=...). Until that
+   * exists, the Google review button opens the Maps listing, where visitors can tap "Write a review".
+   */
+  googleReviewUrl: process.env.NEXT_PUBLIC_GOOGLE_REVIEW_URL || "https://maps.app.goo.gl/Nxc1yLqwbvXVnqbF9",
   gaId: process.env.NEXT_PUBLIC_GA_ID ?? "",
 } as const;
 
