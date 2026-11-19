@@ -1,4 +1,4 @@
-export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://effortless-llama-d253c6.netlify.app").replace(/\/$/, "");
+export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://maa-kothgadi-travels.vercel.app").replace(/\/$/, "");
 
 export const business = {
   name: "Maa Kothgadi Tour & Travels",

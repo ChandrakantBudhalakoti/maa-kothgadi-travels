@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: LocaleParams): Promise<Metada
     title: { default: SITE_NAME, template: `%s | ${SITE_NAME}` },
     applicationName: SITE_NAME,
     formatDetection: { telephone: true },
-    verification: process.env.GOOGLE_SITE_VERIFICATION ? { google: process.env.GOOGLE_SITE_VERIFICATION } : undefined,
+    verification: { google: "yKOHr6XY2H0EL2VwtjjFDZkJFklTn1Ec6zig88enJ1Y" },
   };
 }
 

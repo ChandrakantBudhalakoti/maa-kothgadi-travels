@@ -34,7 +34,7 @@ Without Redis, `next dev` stores reviews in `.data/reviews.json` (never used in 
 
 - Review link: set `NEXT_PUBLIC_GOOGLE_REVIEW_URL` once the Business Profile is verified. A button then appears on the Reviews page.
 - Maps: set `NEXT_PUBLIC_GOOGLE_MAPS_URL` after the exact location is confirmed.
-- Analytics: set `NEXT_PUBLIC_GA_ID` (GA4). Search Console: set `GOOGLE_SITE_VERIFICATION`, then submit `/sitemap.xml`.
+- Analytics: set `NEXT_PUBLIC_GA_ID` (GA4). Search Console: the verification tag is already in the site; submit `/sitemap.xml`.
 - No Review or AggregateRating schema is output, by design (Google's self-serving review rules).
 
-Set `NEXT_PUBLIC_SITE_URL` to the real domain before launch: it drives canonicals, sitemap and hreflang.
+`NEXT_PUBLIC_SITE_URL` defaults to https://maa-kothgadi-travels.vercel.app. Set it if you add a custom domain: it drives canonicals, sitemap and hreflang.
